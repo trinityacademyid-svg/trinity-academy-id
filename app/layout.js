@@ -3,8 +3,8 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 export const metadata = {
-  title: 'Trinity Academy ID — Les Private Online',
-  description: 'Platform les private online terpercaya untuk siswa SD, SMP, dan SMA.',
+  title: 'Trinity Academy — From Ambon, Built for Better Learning',
+  description: 'Trinity Academy adalah platform bimbingan belajar online dan home visit untuk siswa SD, SMP, dan SMA di Ambon. Program terstruktur, tutor terseleksi, hasil terukur.',
 }
 
 export default function RootLayout({ children }) {
