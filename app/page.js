@@ -1,7 +1,14 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import {
+  Monitor, Users, Calendar, TrendingUp, Home as HomeIcon,
+  Calculator, BookOpen, FlaskConical, Globe,
+  Zap, Microscope, DollarSign, Map,
+  Network, Clock, PenLine,
+  MessageCircle, Star, Target, Mail, GraduationCap
+} from 'lucide-react'
 
 // ── Scroll Reveal Hook ──
 function useReveal() {
@@ -49,7 +56,7 @@ function FloatingWA() {
         width: 56, height: 56,
         background: '#25D366', borderRadius: '50%',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        fontSize: '1.6rem', zIndex: 999,
+        zIndex: 999,
         boxShadow: '0 4px 20px rgba(37,211,102,0.4)',
         transition: 'opacity 0.3s, transform 0.3s',
         opacity: visible ? 1 : 0,
@@ -57,9 +64,7 @@ function FloatingWA() {
         textDecoration: 'none',
         color: 'white',
       }}>
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-      </svg>
+      <MessageCircle size={24} strokeWidth={1.75} />
     </a>
   )
 }
@@ -92,7 +97,7 @@ function Hero() {
 
       {/* Content */}
       <div className="reveal-left" style={{ flex: 1, maxWidth: 580, zIndex: 1 }}>
-        <div style={{
+        <div className="hide-mobile" style={{
           display: 'inline-flex', alignItems: 'center', gap: 8,
           background: 'rgba(0,180,216,0.15)',
           border: '1px solid rgba(0,180,216,0.3)',
@@ -100,7 +105,7 @@ function Hero() {
           fontSize: '0.85rem', fontWeight: 500,
           padding: '8px 16px', borderRadius: 50, marginBottom: 24,
         }}>
-          🎓 Les Private Online Terpercaya
+          Les Private & Online — Ambon
         </div>
 
         <h1 style={{
@@ -109,16 +114,17 @@ function Hero() {
           fontWeight: 900, color: 'white',
           lineHeight: 1.15, marginBottom: 24,
         }}>
-          Belajar Lebih <span style={{ color: 'var(--gold)' }}>Cerdas,</span><br />
-          Raih Prestasi <span style={{ color: 'var(--gold)' }}>Terbaik</span>
+          From Ambon,<br />
+          <span style={{ color: 'var(--gold)' }}>Built for</span><br />
+          Better Learning.
         </h1>
 
         <p style={{
           fontSize: '1.05rem', color: 'rgba(255,255,255,0.65)',
           lineHeight: 1.8, marginBottom: 36,
         }}>
-          Trinity Academy ID hadir untuk menemani perjalanan belajar siswa SD, SMP, dan SMA
-          dengan tutor berpengalaman secara online via Zoom/Google Meet.
+          Trinity Academy hadir untuk menemani perjalanan belajar siswa SD, SMP, dan SMA —
+          secara online via Zoom maupun offline dengan tutor yang datang langsung ke rumah.
         </p>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap', marginBottom: 48 }}>
@@ -129,7 +135,7 @@ function Hero() {
               padding: '14px 28px', borderRadius: 50,
               boxShadow: 'var(--shadow-gold)', transition: 'all 0.3s',
             }}>
-            🎓 Daftar Sekarang — Gratis!
+            Daftar Sekarang — Gratis
           </Link>
           <Link href="/subjects" style={{
             color: 'rgba(255,255,255,0.8)', fontWeight: 500,
@@ -143,8 +149,8 @@ function Hero() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
           {[
             { num: '50+', label: 'Siswa Aktif' },
-            { num: '10+', label: 'Tutor Berpengalaman' },
-            { num: '15+', label: 'Mata Pelajaran' },
+            { num: '10+', label: 'Tutor Pilihan' },
+            { num: '6', label: 'Program Tersedia' },
           ].map((s, i) => (
             <div key={s.label} style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
               {i > 0 && <div style={{ width: 1, height: 40, background: 'rgba(255,255,255,0.15)' }} />}
@@ -169,7 +175,7 @@ function Hero() {
         minHeight: 460, display: 'flex',
         alignItems: 'center', justifyContent: 'center', zIndex: 1,
       }}>
-        <div style={{
+        <div className="hero-logo" style={{
           width: 280, height: 280, borderRadius: '50%',
           border: '2px solid rgba(0,180,216,0.3)',
           position: 'relative', animation: 'float 6s ease-in-out infinite',
@@ -186,11 +192,11 @@ function Hero() {
 
         {/* Float cards */}
         {[
-          { emoji: '📚', title: 'Matematika SMA', sub: 'Jadwal tersedia hari ini', pos: { top: 20, left: 0 } },
-          { emoji: '⭐', title: 'Rating 4.9/5', sub: 'Dari 50+ ulasan siswa', pos: { bottom: 60, left: -20 } },
-          { emoji: '🎯', title: 'Nilai Naik!', sub: '95% siswa merasakan peningkatan', pos: { top: 40, right: -10 } },
+          { icon: <BookOpen size={18} strokeWidth={1.75} />, title: 'Matematika SMA', sub: 'Jadwal tersedia hari ini', pos: { top: 20, left: 0 } },
+          { icon: <Star size={18} strokeWidth={1.75} />, title: 'Rating 4.9/5', sub: 'Dari 50+ ulasan siswa', pos: { bottom: 60, left: -20 } },
+          { icon: <Target size={18} strokeWidth={1.75} />, title: 'Nilai Naik!', sub: '95% siswa merasakan peningkatan', pos: { top: 40, right: -10 } },
         ].map(card => (
-          <div key={card.title} className="hero-card-float" style={{
+          <div key={card.title} className="hero-card-float hide-mobile" style={{
             position: 'absolute', ...card.pos,
             background: 'rgba(255,255,255,0.08)',
             backdropFilter: 'blur(12px)',
@@ -198,7 +204,7 @@ function Hero() {
             borderRadius: 16, padding: '14px 18px',
             color: 'white', animation: 'float 6s ease-in-out infinite',
           }}>
-            <span style={{ fontSize: '1.5rem', display: 'block', marginBottom: 4 }}>{card.emoji}</span>
+            <div style={{ marginBottom: 6, color: 'var(--gold)' }}>{card.icon}</div>
             <p style={{ fontSize: '0.85rem', fontWeight: 600 }}>{card.title}</p>
             <small style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.55)' }}>{card.sub}</small>
           </div>
@@ -206,14 +212,33 @@ function Hero() {
       </div>
 
       <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-12px); }
-        }
-        @media (max-width: 768px) {
-          section { flex-direction: column !important; padding: 100px 24px 60px !important; text-align: center; }
-        }
-      `}</style>
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+  @media (max-width: 768px) {
+    #hero {
+      flex-direction: column !important;
+      padding: 100px 24px 60px !important;
+      text-align: center !important;
+      gap: 40px !important;
+    }
+    #hero > div:last-child {
+      min-height: auto !important;
+      width: 100% !important;
+      justify-content: center !important;
+    }
+    .hero-logo {
+      width: 200px !important;
+      height: 200px !important;
+      background: #0A3D8F !important;
+    }
+    .hero-logo img {
+      object-fit: contain !important;
+      padding: 20px !important;
+    }
+  }
+`}</style>
     </section>
   )
 }
@@ -223,10 +248,26 @@ function Hero() {
 // ═══════════════════════════════════════════
 function About() {
   const features = [
-    { icon: '🖥️', title: '100% Online', desc: 'Belajar nyaman dari rumah via Zoom atau Google Meet kapan saja.' },
-    { icon: '👨‍🏫', title: 'Tutor Berpengalaman', desc: 'Semua tutor telah melalui seleksi ketat dan berpengalaman di bidangnya.' },
-    { icon: '📅', title: 'Jadwal Fleksibel', desc: 'Sesuaikan jadwal belajar dengan kesibukan siswa dan orang tua.' },
-    { icon: '📈', title: 'Terbukti Efektif', desc: '95% siswa kami mengalami peningkatan nilai yang signifikan.' },
+    {
+      icon: <Monitor size={20} strokeWidth={1.75} />,
+      title: 'Belajar Online',
+      desc: 'Sesi belajar via Zoom atau Google Meet — nyaman dari rumah, kapan saja.'
+    },
+    {
+      icon: <HomeIcon size={20} strokeWidth={1.75} />,
+      title: 'Home Visit',
+      desc: 'Tutor datang langsung ke rumah untuk program private offline di Ambon.'
+    },
+    {
+      icon: <Users size={20} strokeWidth={1.75} />,
+      title: 'Tutor Terseleksi',
+      desc: 'Semua tutor melalui seleksi ketat dan berpengalaman di bidangnya.'
+    },
+    {
+      icon: <TrendingUp size={20} strokeWidth={1.75} />,
+      title: 'Hasil Terukur',
+      desc: 'Evaluasi dan test berkala untuk memastikan perkembangan belajar siswa.'
+    },
   ]
 
   return (
@@ -263,9 +304,11 @@ function About() {
               {features.map(f => (
                 <div key={f.title} style={{ display: 'flex', alignItems: 'flex-start', gap: 16 }}>
                   <div style={{
-                    width: 44, height: 44, background: 'var(--gold-pale)',
-                    borderRadius: 8, display: 'flex', alignItems: 'center',
-                    justifyContent: 'center', fontSize: '1.2rem', flexShrink: 0,
+                    width: 44, height: 44,
+                    background: 'var(--navy-subtle)',
+                    borderRadius: 10,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    color: 'var(--navy)', flexShrink: 0,
                   }}>{f.icon}</div>
                   <div>
                     <h4 style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--navy)', marginBottom: 4 }}>{f.title}</h4>
@@ -290,11 +333,11 @@ function About() {
               }}>🏆 Keunggulan Kami</div>
               <ul style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {[
+                  'Online via Zoom & offline home visit',
                   'Sesi 1-on-1 yang fokus & personal',
                   'Materi disesuaikan kebutuhan siswa',
-                  'Laporan perkembangan berkala',
+                  'Trinity Learning Report (program exclusive)',
                   'Konsultasi gratis sebelum mulai',
-                  'Harga terjangkau & transparan',
                   'Tersedia untuk SD, SMP, SMA',
                 ].map(item => (
                   <li key={item} style={{
@@ -304,14 +347,17 @@ function About() {
                 ))}
               </ul>
             </div>
-            <div style={{
-              position: 'absolute', bottom: -24, right: -24,
-              background: 'var(--gold)', color: 'var(--navy)',
-              borderRadius: 16, padding: '16px 20px', textAlign: 'center',
-              boxShadow: 'var(--shadow-gold)', animation: 'float 5s ease-in-out infinite',
-            }}>
-              <span style={{ fontSize: '1.5rem', display: 'block' }}>🎓</span>
-              <p style={{ fontSize: '0.8rem', marginTop: 4 }}>Mulai dari<br /><strong>Nol Bersama</strong></p>
+            <div className="hide-mobile" style={{
+  position: 'absolute', bottom: -24, right: -24,
+  background: 'var(--gold)', color: 'var(--navy)',
+  borderRadius: 16, padding: '16px 20px', textAlign: 'center',
+  boxShadow: 'var(--shadow-gold)', animation: 'float 5s ease-in-out infinite',
+}}>
+              <p style={{
+                fontFamily: 'Playfair Display, serif',
+                fontSize: '1.1rem', fontWeight: 700,
+                color: 'var(--navy)', lineHeight: 1.3,
+              }}>From<br />Ambon.</p>
             </div>
           </div>
         </div>
@@ -333,38 +379,58 @@ function SubjectsPreview() {
   const [activeTab, setActiveTab] = useState('sd')
 
   const tabs = [
-    { id: 'sd', label: '🎒 SD' },
-    { id: 'smp', label: '📗 SMP' },
-    { id: 'sma-ipa', label: '🔬 SMA IPA' },
-    { id: 'sma-ips', label: '🌍 SMA IPS' },
+    { id: 'sd', label: 'SD' },
+    { id: 'smp', label: 'SMP' },
+    { id: 'sma-ipa', label: 'SMA IPA' },
+    { id: 'sma-ips', label: 'SMA IPS' },
   ]
+
+  const SubjectIcon = ({ type }) => {
+    const icons = {
+      math: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /><rect x="3" y="3" width="7" height="7" rx="1" /><rect x="14" y="14" width="7" height="7" rx="1" /></svg>,
+      english: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M4 7h16M4 12h10M4 17h13" /></svg>,
+      science: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M9 3v10l-5 7h16l-5-7V3" /><line x1="9" y1="3" x2="15" y2="3" /></svg>,
+      read: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M2 6s1.5-2 5-2 5 2 5 2v14s-1.5-1-5-1-5 1-5 1V6z" /><path d="M12 6s1.5-2 5-2 5 2 5 2v14s-1.5-1-5-1-5 1-5 1V6z" /></svg>,
+      ipa: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><circle cx="12" cy="12" r="3" /><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" /></svg>,
+      ips: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" /></svg>,
+      physics: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5M2 12l10 5 10-5" /></svg>,
+      chemistry: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M9 3v10l-5 7h16l-5-7V3" /><line x1="9" y1="3" x2="15" y2="3" /><circle cx="9" cy="14" r="1" fill="currentColor" /><circle cx="14" cy="16" r="1" fill="currentColor" /></svg>,
+      biology: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>,
+      economy: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6" /></svg>,
+      geography: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" /></svg>,
+      sociology: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" /></svg>,
+      history: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>,
+      calistung: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" /></svg>,
+    }
+    return icons[type] || icons.math
+  }
 
   const subjects = {
     sd: [
-      { icon: '🔢', title: 'Matematika', desc: 'Operasi hitung, pecahan, geometri dasar' },
-      { icon: '🇬🇧', title: 'Bahasa Inggris', desc: 'Kosakata, grammar dasar, percakapan' },
-      { icon: '🔬', title: 'Sains (IPA Dasar)', desc: 'Makhluk hidup, lingkungan, energi' },
-      { icon: '📖', title: 'Calistung', desc: 'Baca, tulis, dan hitung untuk siswa awal' },
+      { icon: <Calculator size={22} strokeWidth={1.75} />, title: 'Matematika', desc: 'Operasi hitung, pecahan, geometri dasar' },
+      { icon: <BookOpen size={22} strokeWidth={1.75} />, title: 'Bahasa Inggris', desc: 'Kosakata, grammar dasar, percakapan' },
+      { icon: <FlaskConical size={22} strokeWidth={1.75} />, title: 'Sains (IPA Dasar)', desc: 'Makhluk hidup, lingkungan, energi' },
+      { icon: <PenLine size={22} strokeWidth={1.75} />, title: 'Calistung', desc: 'Baca, tulis, dan hitung untuk siswa awal' },
     ],
     smp: [
-      { icon: '🔢', title: 'Matematika', desc: 'Aljabar, geometri, statistika dasar' },
-      { icon: '🇬🇧', title: 'Bahasa Inggris', desc: 'Reading, writing, grammar, speaking' },
-      { icon: '⚗️', title: 'IPA', desc: 'Fisika, kimia, biologi tingkat SMP' },
-      { icon: '🌏', title: 'IPS', desc: 'Sejarah, geografi, ekonomi dasar' },
+      { icon: <Calculator size={22} strokeWidth={1.75} />, title: 'Matematika', desc: 'Aljabar, geometri, statistika dasar' },
+      { icon: <BookOpen size={22} strokeWidth={1.75} />, title: 'Bahasa Inggris', desc: 'Reading, writing, grammar, speaking' },
+      { icon: <FlaskConical size={22} strokeWidth={1.75} />, title: 'IPA', desc: 'Fisika, kimia, biologi tingkat SMP' },
+      { icon: <Globe size={22} strokeWidth={1.75} />, title: 'IPS', desc: 'Sejarah, geografi, ekonomi dasar' },
     ],
     'sma-ipa': [
-      { icon: '🔢', title: 'Matematika', desc: 'Kalkulus, trigonometri, statistika' },
-      { icon: '⚡', title: 'Fisika', desc: 'Mekanika, listrik, gelombang, optik' },
-      { icon: '⚗️', title: 'Kimia', desc: 'Reaksi kimia, stoikiometri, organik' },
-      { icon: '🧬', title: 'Biologi', desc: 'Sel, genetika, ekosistem, evolusi' },
-      { icon: '🇬🇧', title: 'Bahasa Inggris', desc: 'TOEFL prep, essay, advanced grammar' },
+      { icon: <Calculator size={22} strokeWidth={1.75} />, title: 'Matematika', desc: 'Kalkulus, trigonometri, statistika' },
+      { icon: <Zap size={22} strokeWidth={1.75} />, title: 'Fisika', desc: 'Mekanika, listrik, gelombang, optik' },
+      { icon: <FlaskConical size={22} strokeWidth={1.75} />, title: 'Kimia', desc: 'Reaksi kimia, stoikiometri, organik' },
+      { icon: <Microscope size={22} strokeWidth={1.75} />, title: 'Biologi', desc: 'Sel, genetika, ekosistem, evolusi' },
+      { icon: <BookOpen size={22} strokeWidth={1.75} />, title: 'Bahasa Inggris', desc: 'TOEFL prep, essay, advanced grammar' },
     ],
     'sma-ips': [
-      { icon: '💰', title: 'Ekonomi', desc: 'Mikro, makro, akuntansi dasar' },
-      { icon: '🗺️', title: 'Geografi', desc: 'Peta, lingkungan, geografi regional' },
-      { icon: '👥', title: 'Sosiologi', desc: 'Struktur sosial, budaya, perubahan' },
-      { icon: '📜', title: 'Sejarah', desc: 'Sejarah Indonesia & dunia' },
-      { icon: '🇬🇧', title: 'Bahasa Inggris', desc: 'TOEFL prep, essay, advanced grammar' },
+      { icon: <DollarSign size={22} strokeWidth={1.75} />, title: 'Ekonomi', desc: 'Mikro, makro, akuntansi dasar' },
+      { icon: <Map size={22} strokeWidth={1.75} />, title: 'Geografi', desc: 'Peta, lingkungan, geografi regional' },
+      { icon: <Network size={22} strokeWidth={1.75} />, title: 'Sosiologi', desc: 'Struktur sosial, budaya, perubahan' },
+      { icon: <Clock size={22} strokeWidth={1.75} />, title: 'Sejarah', desc: 'Sejarah Indonesia & dunia' },
+      { icon: <BookOpen size={22} strokeWidth={1.75} />, title: 'Bahasa Inggris', desc: 'TOEFL prep, essay, advanced grammar' },
     ],
   }
 
@@ -417,8 +483,6 @@ function SubjectsPreview() {
         }}>
           {subjects[activeTab].map((s, i) => (
             <div key={s.title}
-              className="reveal"
-              data-delay={i}
               style={{
                 background: 'var(--white)', borderRadius: 16,
                 padding: '28px 24px', textAlign: 'center',
@@ -437,7 +501,15 @@ function SubjectsPreview() {
                 e.currentTarget.style.boxShadow = '0 2px 16px rgba(0,0,0,0.06)'
               }}
             >
-              <span style={{ fontSize: '2.2rem', display: 'block', marginBottom: 12 }}>{s.icon}</span>
+              <div style={{
+                width: 48, height: 48,
+                background: 'var(--navy-subtle)',
+                borderRadius: 12,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                color: 'var(--navy)', margin: '0 auto 16px',
+              }}>
+                {s.icon}
+              </div>
               <h4 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--navy)', marginBottom: 8 }}>{s.title}</h4>
               <p style={{ fontSize: '0.83rem', color: 'var(--text-light)', lineHeight: 1.5 }}>{s.desc}</p>
             </div>
@@ -474,10 +546,46 @@ function SubjectsPreview() {
 // ═══════════════════════════════════════════
 function TutorsPreview() {
   const tutors = [
-    { avatar: '👩‍🏫', name: 'Sari Dewi, S.Pd', badge: 'Matematika & IPA', uni: 'Univ. Indonesia', rating: '4.9', reviews: 32, desc: '5 tahun pengalaman mengajar matematika SD–SMA.', tags: ['SD', 'SMP', 'SMA IPA'] },
-    { avatar: '👨‍🏫', name: 'Budi Santoso, S.Si', badge: 'Fisika & Kimia', uni: 'ITB', rating: '4.8', reviews: 28, desc: 'Lulusan ITB dengan metode berbasis contoh nyata.', tags: ['SMP', 'SMA IPA'] },
-    { avatar: '👩‍💼', name: 'Rina Putri, S.Pd', badge: 'Bahasa Inggris', uni: 'UGM', rating: '5.0', reviews: 41, desc: 'TOEFL 600+, berpengalaman academic English.', tags: ['SD', 'SMP', 'SMA'] },
-    { avatar: '👨‍💼', name: 'Hendra Wijaya, S.E', badge: 'Ekonomi & IPS', uni: 'UNAIR', rating: '4.7', reviews: 19, desc: 'Pakar ekonomi dengan 4 tahun bimbel intensif.', tags: ['SMP', 'SMA IPS'] },
+    {
+      name: 'Sari Dewi, S.Pd',
+      badge: 'Matematika & IPA',
+      uni: 'Univ. Indonesia',
+      rating: '4.9', reviews: 32,
+      desc: '5 tahun pengalaman mengajar matematika SD hingga SMA. Dikenal sabar dan mudah dipahami.',
+      tags: ['SD', 'SMP', 'SMA IPA'],
+      photo: 'https://ui-avatars.com/api/?name=Sari+Dewi&background=E8F0FE&color=1a3a5c&size=200&bold=true',
+      available: true,
+    },
+    {
+      name: 'Budi Santoso, S.Si',
+      badge: 'Fisika & Kimia',
+      uni: 'ITB',
+      rating: '4.8', reviews: 28,
+      desc: 'Lulusan ITB dengan metode pengajaran berbasis contoh nyata kehidupan sehari-hari.',
+      tags: ['SMP', 'SMA IPA'],
+      photo: 'https://ui-avatars.com/api/?name=Budi+Santoso&background=E8F0FE&color=1a3a5c&size=200&bold=true',
+      available: true,
+    },
+    {
+      name: 'Rina Putri, S.Pd',
+      badge: 'Bahasa Inggris',
+      uni: 'UGM',
+      rating: '5.0', reviews: 41,
+      desc: 'TOEFL score 600+. Berpengalaman mengajar conversation dan academic writing.',
+      tags: ['SD', 'SMP', 'SMA'],
+      photo: 'https://ui-avatars.com/api/?name=Rina+Putri&background=E8F0FE&color=1a3a5c&size=200&bold=true',
+      available: true,
+    },
+    {
+      name: 'Hendra Wijaya, S.E',
+      badge: 'Ekonomi & IPS',
+      uni: 'UNAIR',
+      rating: '4.7', reviews: 19,
+      desc: 'Pakar ekonomi dan IPS dengan pengalaman 4 tahun bimbel intensif SMA.',
+      tags: ['SMP', 'SMA IPS'],
+      photo: 'https://ui-avatars.com/api/?name=Hendra+Wijaya&background=E8F0FE&color=1a3a5c&size=200&bold=true',
+      available: false,
+    },
   ]
 
   return (
@@ -527,12 +635,19 @@ function TutorsPreview() {
                 e.currentTarget.style.boxShadow = 'none'
               }}
             >
-              <div style={{
-                fontSize: '3.5rem', width: 80, height: 80,
-                background: 'var(--gold-pale)', borderRadius: '50%',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                margin: '0 auto 16px',
-              }}>{t.avatar}</div>
+              <div style={{ position: 'relative', width: 72, height: 72, margin: '0 auto 16px' }}>
+                <img
+                  src={t.photo}
+                  alt={t.name}
+                  style={{ width: 72, height: 72, borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--border)' }}
+                />
+                <div style={{
+                  position: 'absolute', bottom: 2, right: 2,
+                  width: 12, height: 12, borderRadius: '50%',
+                  background: t.available ? '#22c55e' : '#94a3b8',
+                  border: '2px solid white',
+                }} />
+              </div>
               <h4 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--navy)', marginBottom: 6 }}>{t.name}</h4>
               <span style={{
                 display: 'inline-block', background: 'var(--navy)',
@@ -540,8 +655,12 @@ function TutorsPreview() {
                 padding: '4px 12px', borderRadius: 50, marginBottom: 12,
               }}>{t.badge}</span>
               <div style={{ display: 'flex', justifyContent: 'center', gap: 12, marginBottom: 10, flexWrap: 'wrap' }}>
-                <span style={{ fontSize: '0.78rem', color: 'var(--text-light)' }}>🎓 {t.uni}</span>
-                <span style={{ fontSize: '0.78rem', color: 'var(--text-light)' }}>⭐ {t.rating} ({t.reviews} ulasan)</span>
+                <span style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: '0.78rem', color: 'var(--text-light)' }}>
+  <GraduationCap size={12} strokeWidth={1.75} /> {t.uni}
+</span>
+<span style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: '0.78rem', color: 'var(--text-light)' }}>
+  <Star size={12} strokeWidth={1.75} fill="var(--gold)" color="var(--gold)" /> {t.rating} ({t.reviews} ulasan)
+</span>
               </div>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-mid)', lineHeight: 1.6, marginBottom: 14 }}>{t.desc}</p>
               <div style={{ display: 'flex', justifyContent: 'center', gap: 6, flexWrap: 'wrap' }}>
@@ -586,12 +705,48 @@ function TutorsPreview() {
 // ═══════════════════════════════════════════
 function Testimonials() {
   const testis = [
-    { stars: '⭐⭐⭐⭐⭐', text: 'Nilai matematika anak saya naik dari 60 ke 85 hanya dalam 2 bulan! Tutornya sabar banget.', name: 'Ibu Ratna', role: 'Orang tua siswa SMP, Jakarta', avatar: '👩' },
-    { stars: '⭐⭐⭐⭐⭐', text: 'Belajar fisika jadi jauh lebih mudah. Tutor selalu kasih contoh yang relate sama kehidupan sehari-hari.', name: 'Dani', role: 'Siswa SMA IPA, Surabaya', avatar: '👦' },
-    { stars: '⭐⭐⭐⭐⭐', text: 'Jadwalnya fleksibel, bisa disesuaikan dengan kesibukan anak. Sangat membantu untuk persiapan ujian.', name: 'Pak Hendro', role: 'Orang tua siswa SD, Bandung', avatar: '👨' },
-    { stars: '⭐⭐⭐⭐⭐', text: 'Bahasa Inggris saya meningkat drastis! Sekarang lebih percaya diri speaking di kelas.', name: 'Sinta', role: 'Siswa SMA IPS, Medan', avatar: '👧' },
-    { stars: '⭐⭐⭐⭐⭐', text: 'Harganya sangat terjangkau tapi kualitas tutornya tidak kalah dengan bimbel besar. Worth it!', name: 'Ibu Susi', role: 'Orang tua siswa SMP, Yogyakarta', avatar: '👩' },
-    { stars: '⭐⭐⭐⭐⭐', text: 'Anak saya yang tadinya tidak suka belajar, sekarang malah minta tambah jam les!', name: 'Pak Agus', role: 'Orang tua siswa SD, Semarang', avatar: '👨' },
+    {
+      stars: 5,
+      text: 'Anak saya yang tadinya kesulitan matematika, sekarang nilainya naik signifikan. Tutornya sabar dan cara menjelaskannya mudah dipahami.',
+      name: 'Ibu Margaretha',
+      role: 'Orang tua siswa SMP, Ambon',
+      initials: 'MR',
+    },
+    {
+      stars: 5,
+      text: 'Program home visit-nya sangat membantu. Tidak perlu keluar rumah, tutor datang tepat waktu dan materi yang diajarkan sesuai kebutuhan.',
+      name: 'Pak Dominggus',
+      role: 'Orang tua siswa SD, Ambon',
+      initials: 'DM',
+    },
+    {
+      stars: 5,
+      text: 'Fisika SMA yang dulu saya anggap sulit sekarang jadi jauh lebih mudah. Tutornya selalu sabar menjawab pertanyaan dan memberikan latihan soal.',
+      name: 'Yolanda',
+      role: 'Siswa SMA IPA, Ambon',
+      initials: 'YL',
+    },
+    {
+      stars: 5,
+      text: 'Jadwal les bisa disesuaikan dengan kegiatan anak. Kami sangat puas dengan pelayanan Trinity Academy, recommended!',
+      name: 'Ibu Selfia',
+      role: 'Orang tua siswa SMP, Ambon',
+      initials: 'SF',
+    },
+    {
+      stars: 5,
+      text: 'Bahasa Inggris saya meningkat pesat sejak les di sini. Tutor selalu membuat suasana belajar menjadi menyenangkan dan tidak membosankan.',
+      name: 'Kevin',
+      role: 'Siswa SMA IPS, Ambon',
+      initials: 'KV',
+    },
+    {
+      stars: 5,
+      text: 'Trinity Learning Report yang diberikan setiap bulan sangat membantu kami memantau perkembangan belajar anak. Terima kasih Trinity Academy!',
+      name: 'Pak Samuel',
+      role: 'Orang tua siswa SD, Ambon',
+      initials: 'SM',
+    },
   ]
 
   return (
@@ -622,9 +777,7 @@ function Testimonials() {
           gap: 24,
         }}>
           {testis.map((t, i) => (
-            <div key={t.name}
-              className="reveal"
-              data-delay={i}
+  <div key={i}
               style={{
                 background: 'var(--white)', borderRadius: 16,
                 padding: 28, boxShadow: '0 2px 16px rgba(0,0,0,0.06)',
@@ -641,16 +794,23 @@ function Testimonials() {
                 e.currentTarget.style.boxShadow = '0 2px 16px rgba(0,0,0,0.06)'
               }}
             >
-              <div style={{ fontSize: '0.9rem', marginBottom: 14 }}>{t.stars}</div>
+              <div style={{ display: 'flex', gap: 3, marginBottom: 14 }}>
+                {[...Array(t.stars)].map((_, i) => (
+                  <Star key={i} size={14} fill="var(--gold)" color="var(--gold)" />
+                ))}
+              </div>
               <p style={{ fontSize: '0.9rem', color: 'var(--text-mid)', lineHeight: 1.7, fontStyle: 'italic', marginBottom: 20 }}>
                 "{t.text}"
               </p>
               <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                 <div style={{
-                  width: 42, height: 42, background: 'var(--gold-pale)',
+                  width: 42, height: 42,
+                  background: 'var(--navy)',
                   borderRadius: '50%', display: 'flex',
-                  alignItems: 'center', justifyContent: 'center', fontSize: '1.3rem',
-                }}>{t.avatar}</div>
+                  alignItems: 'center', justifyContent: 'center',
+                  fontSize: '0.75rem', fontWeight: 700, color: 'var(--gold)',
+                  flexShrink: 0,
+                }}>{t.initials}</div>
                 <div>
                   <strong style={{ display: 'block', fontSize: '0.9rem', color: 'var(--navy)' }}>{t.name}</strong>
                   <small style={{ fontSize: '0.78rem', color: 'var(--text-light)' }}>{t.role}</small>
@@ -681,7 +841,7 @@ function Suggestions() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          access_key: '59168487-c0ba-4ad2-9b7f-f164b57b68d3',
+          access_key: 'a5161d81-6450-4fe4-8bb9-5604706a106c',
           subject: `Saran Baru dari ${form.name} — Trinity Academy ID`,
           from_name: form.name,
           role: form.role,
@@ -785,7 +945,7 @@ function Suggestions() {
                 width: '100%', opacity: loading ? 0.7 : 1,
                 transition: 'all 0.3s',
               }}>
-              {loading ? 'Mengirim...' : 'Kirim Saran 🚀'}
+              {loading ? 'Mengirim...' : 'Kirim Saran '}
             </button>
             {success && (
               <div style={{
@@ -800,8 +960,8 @@ function Suggestions() {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
             {[
-              { icon: '💬', title: 'Hubungi Langsung', desc: 'Untuk pertanyaan cepat, langsung chat kami via WhatsApp.', link: 'https://wa.me/6281234567890', label: 'Chat WhatsApp' },
-              { icon: '📧', title: 'Email Kami', desc: 'Kirim pertanyaan atau saran ke email resmi kami.', link: 'mailto:info@trinityacademy.id', label: 'Kirim Email' },
+              { icon: <MessageCircle size={24} strokeWidth={1.75} />, title: 'Hubungi Langsung', desc: 'Untuk pertanyaan cepat, langsung chat kami via WhatsApp.', link: 'https://wa.me/6281234567890', label: 'Chat WhatsApp' },
+              { icon: <Mail size={24} strokeWidth={1.75} />, title: 'Email Kami', desc: 'Kirim pertanyaan atau saran ke email resmi kami.', link: 'mailto:trinityacademy.id@gmail.com', label: 'Kirim Email' },
             ].map(card => (
               <div key={card.title} style={{
                 background: 'var(--cream)', borderRadius: 16,
@@ -811,7 +971,9 @@ function Suggestions() {
                 onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--gold)'}
                 onMouseLeave={e => e.currentTarget.style.borderColor = 'transparent'}
               >
-                <span style={{ fontSize: '2rem', display: 'block', marginBottom: 10 }}>{card.icon}</span>
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 10, color: 'var(--navy)' }}>
+                  {card.icon}
+                </div>
                 <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--navy)', marginBottom: 8 }}>{card.title}</h4>
                 <p style={{ fontSize: '0.83rem', color: 'var(--text-light)', lineHeight: 1.6, marginBottom: 14 }}>{card.desc}</p>
                 <a href={card.link} target="_blank" rel="noreferrer" style={{

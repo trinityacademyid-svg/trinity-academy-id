@@ -4,98 +4,115 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
+const navLinks = [
+  { label: 'Program', href: '/pricing' },
+  { label: 'Mata Pelajaran', href: '/subjects' },
+  { label: 'Tutor', href: '/tutors' },
+]
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const pathname = usePathname()
-  const isHome = pathname === '/'
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50)
+    const handleScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const closeMobile = () => setMobileOpen(false)
+  useEffect(() => {
+    setMobileOpen(false)
+  }, [pathname])
 
-  const navLinks = [
-    { label: 'Tentang', href: isHome ? '#about' : '/#about' },
-    { label: 'Mata Pelajaran', href: '/subjects' },
-    { label: 'Tutor', href: '/tutors' },
-    { label: 'Harga', href: '/pricing' },
-    { label: 'Testimoni', href: isHome ? '#testimonials' : '/#testimonials' },
-    { label: 'Saran', href: isHome ? '#suggestions' : '/#suggestions' },
-  ]
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [mobileOpen])
 
   return (
     <>
       <nav style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        padding: scrolled ? '12px 60px' : '18px 60px',
-        background: '#0A3D8F',
-        backdropFilter: 'blur(16px)',
-        borderBottom: '1px solid rgba(201,168,76,0.15)',
-        transition: 'all 0.3s ease',
-        boxShadow: scrolled ? '0 4px 30px rgba(0,0,0,0.2)' : 'none',
-      }}>
+        height: 68,
+        display: 'flex', alignItems: 'center',
+        padding: '0 48px',
+        background: 'var(--navy)',
+        backdropFilter: 'blur(20px)',
+        borderBottom: '1px solid rgba(255,255,255,0.06)',
+        boxShadow: scrolled ? '0 4px 24px rgba(0,0,0,0.2)' : 'none',
+      }
+      }
+      >
 
         {/* Logo */}
-        <Link href="/" style={{ display: 'flex', alignItems: 'center' }}>
+        <Link href="/" style={{ display: 'flex', alignItems: 'center', marginRight: 'auto' }}>
           <img
             src="/logo.png"
             alt="Trinity Academy ID"
-            style={{
-              height: scrolled ? '44px' : '52px',
-              width: 'auto',
-              transition: 'all 0.3s ease',
-            }}
+            style={{ height: 42, width: 'auto', transition: 'all 0.3s' }}
           />
         </Link>
 
         {/* Desktop Links */}
-        <ul style={{
-          display: 'flex', alignItems: 'center', gap: 28,
-          listStyle: 'none',
-        }} className="nav-links-desktop">
-          {navLinks.map(link => (
-            <li key={link.href}>
-              <Link href={link.href}
-                style={{
-                  color: 'rgba(255,255,255,0.75)',
-                  fontSize: '0.88rem', fontWeight: 500,
-                  transition: 'color 0.3s',
+        <ul className="nav-desktop" style={{
+          display: 'flex', alignItems: 'center',
+          gap: 36, listStyle: 'none', marginRight: 36,
+        }}>
+          {navLinks.map(link => {
+            const isActive = pathname === link.href ||
+              (link.href !== '/' && pathname.startsWith(link.href.split('#')[0]) && link.href.split('#')[0] !== '/')
+            return (
+              <li key={link.href}>
+                <Link href={link.href} style={{
+                  fontSize: '0.875rem',
+                  fontWeight: isActive ? 600 : 400,
+                  color: isActive ? 'var(--white)' : 'rgba(255,255,255,0.65)',
+                  transition: 'color 0.2s',
                   position: 'relative',
+                  paddingBottom: 2,
                 }}
-                onMouseEnter={e => e.target.style.color = 'white'}
-                onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.75)'}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
+                  onMouseEnter={e => e.target.style.color = 'var(--white)'}
+                  onMouseLeave={e => e.target.style.color = isActive ? 'var(--white)' : 'rgba(255,255,255,0.65)'}
+                >
+                  {link.label}
+                  {isActive && (
+                    <span style={{
+                      position: 'absolute', bottom: -2, left: 0, right: 0,
+                      height: 2, background: 'var(--gold)', borderRadius: 2,
+                    }} />
+                  )}
+                </Link>
+              </li>
+            )
+          })}
         </ul>
 
-        {/* Right Buttons */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }} className="nav-btns-desktop">
-          <Link href="/register"
+        {/* CTA */}
+        <div className="nav-desktop" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <a href="https://wa.me/6281234567890" target="_blank" rel="noreferrer"
             style={{
-              background: 'var(--gold)',
-              color: 'var(--navy)',
-              fontWeight: 700, fontSize: '0.85rem',
-              padding: '10px 22px', borderRadius: 50,
-              transition: 'all 0.3s',
-              whiteSpace: 'nowrap',
+              fontSize: '0.875rem', fontWeight: 500,
+              color: 'rgba(255,255,255,0.65)', transition: 'color 0.2s',
             }}
+            onMouseEnter={e => e.target.style.color = 'var(--white)'}
+            onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.65)'}
+          >
+            Hubungi
+          </a>
+          <Link href="/register" style={{
+            background: 'var(--navy)', color: 'var(--white)',
+            fontSize: '0.875rem', fontWeight: 600,
+            padding: '10px 22px', borderRadius: 50,
+            transition: 'all 0.25s',
+          }}
             onMouseEnter={e => {
               e.currentTarget.style.background = 'var(--gold-light)'
-              e.currentTarget.style.transform = 'translateY(-2px)'
-              e.currentTarget.style.boxShadow = '0 4px 20px rgba(201,168,76,0.4)'
+              e.currentTarget.style.transform = 'translateY(-1px)'
             }}
             onMouseLeave={e => {
-              e.currentTarget.style.background = 'var(--gold)'
+              e.currentTarget.style.background = 'var(--navy)'
               e.currentTarget.style.transform = 'translateY(0)'
-              e.currentTarget.style.boxShadow = 'none'
             }}
           >
             Daftar Sekarang
@@ -103,79 +120,88 @@ export default function Navbar() {
         </div>
 
         {/* Hamburger */}
-        <button
+        <button className="nav-mobile-btn"
           onClick={() => setMobileOpen(!mobileOpen)}
           style={{
             display: 'none',
             background: 'none', border: 'none',
-            color: 'white', fontSize: '1.5rem', cursor: 'pointer',
+            cursor: 'pointer', padding: 8,
+            color: 'var(--white)',
           }}
-          className="nav-hamburger"
+          aria-label="Toggle menu"
         >
-          {mobileOpen ? '✕' : '☰'}
+          {mobileOpen ? (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          ) : (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          )}
         </button>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Overlay */}
       {mobileOpen && (
         <div style={{
-          position: 'fixed',
-          top: 70, left: 0, right: 0,
+          position: 'fixed', inset: 0, zIndex: 999,
           background: 'var(--navy)',
-          zIndex: 999,
-          padding: '24px 32px',
-          borderBottom: '1px solid rgba(201,168,76,0.2)',
+          paddingTop: 68,
+          display: 'flex', flexDirection: 'column',
         }}>
-          <ul style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            {navLinks.map(link => (
-              <li key={link.href}>
-                <Link href={link.href} onClick={closeMobile} style={{
-                  color: 'rgba(255,255,255,0.85)',
-                  fontSize: '1rem', fontWeight: 500,
-                  display: 'block', padding: '10px 0',
-                  borderBottom: '1px solid rgba(255,255,255,0.06)',
-                }}>
-                  {link.label}
-                </Link>
+          <div style={{ padding: '32px 28px', flex: 1 }}>
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: 4, marginBottom: 32 }}>
+              {navLinks.map(link => (
+                <li key={link.href}>
+                  <Link href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    style={{
+                      display: 'block',
+                      fontSize: '1.1rem', fontWeight: 500,
+                      color: 'rgba(255,255,255,0.85)',
+                      padding: '14px 0',
+                      borderBottom: '1px solid rgba(255,255,255,0.08)',
+                    }}>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <a href="https://wa.me/6281234567890" target="_blank" rel="noreferrer"
+                  onClick={() => setMobileOpen(false)}
+                  style={{
+                    display: 'block',
+                    fontSize: '1.1rem', fontWeight: 500,
+                    color: 'rgba(255,255,255,0.85)',
+                    padding: '14px 0',
+                    borderBottom: '1px solid rgba(255,255,255,0.08)',
+                  }}>
+                  Hubungi
+                </a>
               </li>
-            ))}
-            <li style={{ marginTop: 8 }}>
-              <a href="https://wa.me/6281234567890" target="_blank" rel="noreferrer"
-                onClick={closeMobile}
-                style={{
-                  display: 'block', padding: '10px 0',
-                  color: 'rgba(255,255,255,0.85)', fontSize: '1rem', fontWeight: 500,
-                  borderBottom: '1px solid rgba(255,255,255,0.06)',
-                }}>
-                💬 Hubungi Kami
-              </a>
-            </li>
-            <li style={{ marginTop: 12 }}>
-              <Link href="/register" onClick={closeMobile}
-                style={{
-                  display: 'block', textAlign: 'center',
-                  background: 'var(--gold)', color: 'var(--navy)',
-                  fontWeight: 700, padding: '14px 24px',
-                  borderRadius: 50, fontSize: '0.95rem',
-                }}>
-                Daftar Sekarang
-              </Link>
-            </li>
-          </ul>
+            </ul>
+            <Link href="/register" onClick={() => setMobileOpen(false)}
+              style={{
+                display: 'block', textAlign: 'center',
+                background: 'var(--gold)', color: 'var(--navy)',
+                fontWeight: 600, fontSize: '1rem',
+                padding: '16px', borderRadius: 50,
+              }}>
+              Daftar Sekarang
+            </Link>
+          </div>
         </div>
       )}
 
-      {/* Responsive CSS */}
       <style>{`
-        @media (max-width: 1024px) {
-          nav { padding: ${scrolled ? '12px 32px' : '16px 32px'} !important; }
-          .nav-links-desktop { gap: 18px !important; }
-        }
         @media (max-width: 768px) {
-          .nav-links-desktop { display: none !important; }
-          .nav-btns-desktop { display: none !important; }
-          .nav-hamburger { display: block !important; }
-          nav { padding: 16px 24px !important; }
+          .nav-desktop { display: none !important; }
+          .nav-mobile-btn { display: flex !important; }
+          nav { padding: 0 20px !important; }
         }
       `}</style>
     </>

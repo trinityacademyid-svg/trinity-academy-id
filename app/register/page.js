@@ -1,13 +1,29 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { User, BookOpen, Calendar, CheckCircle, MessageCircle } from 'lucide-react'
+
+function useReveal() {
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible')
+          observer.unobserve(entry.target)
+        }
+      })
+    }, { threshold: 0.08, rootMargin: '0px 0px -48px 0px' })
+    document.querySelectorAll('.reveal, .stagger-children').forEach(el => observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
+}
 
 const steps = [
-  { id: 1, label: 'Data Diri', icon: '👤' },
-  { id: 2, label: 'Kebutuhan Belajar', icon: '📚' },
-  { id: 3, label: 'Jadwal', icon: '📅' },
-  { id: 4, label: 'Konfirmasi', icon: '✅' },
+  { id: 1, label: 'Data Diri', icon: <User size={18} strokeWidth={1.75} /> },
+  { id: 2, label: 'Kebutuhan Belajar', icon: <BookOpen size={18} strokeWidth={1.75} /> },
+  { id: 3, label: 'Jadwal', icon: <Calendar size={18} strokeWidth={1.75} /> },
+  { id: 4, label: 'Konfirmasi', icon: <CheckCircle size={18} strokeWidth={1.75} /> },
 ]
 
 const subjects = [
@@ -20,6 +36,7 @@ const days = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu']
 const times = ['07.00–08.00', '08.00–09.00', '09.00–10.00', '13.00–14.00', '14.00–15.00', '15.00–16.00', '16.00–17.00', '19.00–20.00', '20.00–21.00']
 
 export default function RegisterPage() {
+  useReveal()
   const [step, setStep] = useState(1)
   const [form, setForm] = useState({
     // Step 1
@@ -104,7 +121,15 @@ Terima kasih!`
     return (
       <main style={{ paddingTop: 80, minHeight: '100vh', background: 'var(--cream)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div style={{ textAlign: 'center', maxWidth: 480, padding: '0 24px' }}>
-          <span style={{ fontSize: '4rem', display: 'block', marginBottom: 24 }}>🎉</span>
+          <div style={{
+            width: 72, height: 72, borderRadius: '50%',
+            background: 'var(--gold-pale)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            margin: '0 auto 24px',
+            color: 'var(--gold)',
+          }}>
+            <CheckCircle size={36} strokeWidth={1.75} />
+          </div>
           <h2 style={{
             fontFamily: 'Playfair Display, serif',
             fontSize: '2rem', fontWeight: 700,
@@ -136,6 +161,7 @@ Terima kasih!`
         background: 'var(--navy)', padding: '60px 40px',
         textAlign: 'center',
       }}>
+        <div className="reveal">
         <span style={{
           display: 'inline-block', background: 'rgba(0,180,216,0.15)',
           color: 'var(--gold-light)', fontSize: '0.75rem', fontWeight: 600,
@@ -151,17 +177,16 @@ Terima kasih!`
         </h1>
         <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.6)' }}>
           Isi formulir di bawah — gratis, mudah, dan hanya 3 menit!
-        </p>
-      </section>
+        </p>        </div>      </section>
 
       {/* Stepper */}
       <div style={{ background: 'var(--white)', padding: '32px 40px', borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
-        <div style={{
-          maxWidth: 600, margin: '0 auto',
-          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        <div className="stagger-children" style={{
+          maxWidth: 560, margin: '0 auto',
+          display: 'flex', alignItems: 'flex-start',
         }}>
           {steps.map((s, i) => (
-            <div key={s.id} style={{ display: 'flex', alignItems: 'center', flex: i < steps.length - 1 ? 1 : 'none' }}>
+            <div key={s.id} style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
                 <div style={{
                   width: 44, height: 44, borderRadius: '50%',
@@ -173,7 +198,7 @@ Terima kasih!`
                   color: step >= s.id ? 'var(--gold)' : 'var(--text-light)',
                   fontWeight: 700,
                 }}>
-                  {step > s.id ? '✓' : s.icon}
+                  {step > s.id ? <CheckCircle size={18} strokeWidth={2} /> : s.icon}
                 </div>
                 <span style={{
                   fontSize: '0.72rem', fontWeight: 600,
@@ -183,8 +208,8 @@ Terima kasih!`
               </div>
               {i < steps.length - 1 && (
                 <div style={{
-                  flex: 1, height: 2, margin: '0 8px', marginBottom: 20,
-                  background: step > s.id ? 'var(--gold)' : 'rgba(0,0,0,0.08)',
+                  flex: 1, height: 1, margin: '0 12px', marginBottom: 24,
+                  background: step > s.id ? 'var(--gold)' : 'var(--border)',
                   transition: 'background 0.3s',
                 }} />
               )}
@@ -201,7 +226,7 @@ Terima kasih!`
           {step === 1 && (
             <div>
               <h2 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.5rem', fontWeight: 700, color: 'var(--navy)', marginBottom: 8 }}>
-                👤 Data Diri
+                Data Diri
               </h2>
               <p style={{ fontSize: '0.875rem', color: 'var(--text-light)', marginBottom: 28 }}>
                 Siapa yang mendaftar? Orang tua atau siswa langsung?
@@ -254,7 +279,7 @@ Terima kasih!`
           {step === 2 && (
             <div>
               <h2 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.5rem', fontWeight: 700, color: 'var(--navy)', marginBottom: 8 }}>
-                📚 Kebutuhan Belajar
+                Kebutuhan Belajar
               </h2>
               <p style={{ fontSize: '0.875rem', color: 'var(--text-light)', marginBottom: 28 }}>
                 Ceritakan kebutuhan belajar siswa agar kami bisa siapkan tutor terbaik.
@@ -320,9 +345,12 @@ Terima kasih!`
                   </label>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                     {[
-                      { id: 'starter', label: '🌱 Paket Starter', desc: '1 sesi / Rp 75.000' },
-                      { id: 'reguler', label: '🚀 Paket Reguler', desc: '4 sesi / Rp 280.000' },
-                      { id: 'intensif', label: '🏆 Paket Intensif', desc: '8 sesi / Rp 500.000' },
+                      { id: 'baguala', label: 'Baguala Start', desc: 'Grup • 1x/minggu' },
+                      { id: 'latuhalat', label: 'Latuhalat Prime', desc: 'Semi-private • 1–2x/minggu' },
+                      { id: 'hative', label: 'Hative Prime', desc: 'Private 1-on-1 • Online' },
+                      { id: 'passo', label: 'Passo Prime', desc: 'Private • 2x/minggu' },
+                      { id: 'lelemuku', label: 'Lelemuku Prime', desc: 'Exclusive • Online Private' },
+                      { id: 'siwalima', label: 'Siwalima Prime', desc: 'Exclusive • Home Visit' },
                     ].map(p => (
                       <button key={p.id} onClick={() => update('package', p.id)}
                         style={{
@@ -356,7 +384,7 @@ Terima kasih!`
           {step === 3 && (
             <div>
               <h2 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.5rem', fontWeight: 700, color: 'var(--navy)', marginBottom: 8 }}>
-                📅 Pilih Jadwal
+                Pilih Jadwal
               </h2>
               <p style={{ fontSize: '0.875rem', color: 'var(--text-light)', marginBottom: 28 }}>
                 Pilih hari dan waktu yang paling cocok untuk belajar.
@@ -415,7 +443,7 @@ Terima kasih!`
           {step === 4 && (
             <div>
               <h2 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.5rem', fontWeight: 700, color: 'var(--navy)', marginBottom: 8 }}>
-                ✅ Konfirmasi Data
+                Konfirmasi Data
               </h2>
               <p style={{ fontSize: '0.875rem', color: 'var(--text-light)', marginBottom: 28 }}>
                 Pastikan semua data sudah benar sebelum mengirim.
@@ -423,30 +451,37 @@ Terima kasih!`
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                 {[
-                  { label: '👤 Data Diri', items: [
-                    { key: 'Nama', val: form.name },
-                    { key: 'No. WhatsApp', val: form.phone },
-                    { key: 'Email', val: form.email || '-' },
-                    { key: 'Sebagai', val: form.role },
-                  ]},
-                  { label: '📚 Kebutuhan Belajar', items: [
-                    { key: 'Nama Siswa', val: form.studentName || form.name },
-                    { key: 'Jenjang', val: form.level },
-                    { key: 'Mata Pelajaran', val: form.selectedSubjects.join(', ') },
-                    { key: 'Paket', val: form.package },
-                    { key: 'Catatan', val: form.notes || '-' },
-                  ]},
-                  { label: '📅 Jadwal', items: [
-                    { key: 'Hari', val: form.selectedDays.join(', ') },
-                    { key: 'Waktu', val: form.selectedTime + ' WIB' },
-                  ]},
+                  {
+                    label: 'Data Diri', items: [
+                      { key: 'Nama', val: form.name },
+                      { key: 'No. WhatsApp', val: form.phone },
+                      { key: 'Email', val: form.email || '-' },
+                      { key: 'Sebagai', val: form.role },
+                    ]
+                  },
+                  {
+                    label: 'Kebutuhan Belajar', items: [
+                      { key: 'Nama Siswa', val: form.studentName || form.name },
+                      { key: 'Jenjang', val: form.level },
+                      { key: 'Mata Pelajaran', val: form.selectedSubjects.join(', ') },
+                      { key: 'Paket', val: form.package },
+                      { key: 'Catatan', val: form.notes || '-' },
+                    ]
+                  },
+                  {
+                    label: 'Jadwal', items: [
+                      { key: 'Hari', val: form.selectedDays.join(', ') },
+                      { key: 'Waktu', val: form.selectedTime + ' WIB' },
+                    ]
+                  },
                 ].map(section => (
                   <div key={section.label} style={{
                     background: 'var(--cream)', borderRadius: 12, overflow: 'hidden',
                   }}>
                     <div style={{
-                      background: 'var(--navy)', padding: '10px 16px',
-                      fontSize: '0.85rem', fontWeight: 700, color: 'var(--gold)',
+                      background: 'var(--navy)', padding: '12px 16px',
+                      fontSize: '0.78rem', fontWeight: 700, color: 'var(--gold)',
+                      letterSpacing: '0.08em', textTransform: 'uppercase',
                     }}>{section.label}</div>
                     <div style={{ padding: 16 }}>
                       {section.items.map(item => (
@@ -465,16 +500,19 @@ Terima kasih!`
 
               <div style={{
                 marginTop: 20, padding: 16,
-                background: '#fff3cd', borderRadius: 10,
-                fontSize: '0.85rem', color: '#856404',
+                background: 'var(--gold-pale)',
+                border: '1px solid rgba(201,168,76,0.3)',
+                borderRadius: 10,
+                fontSize: '0.85rem', color: 'var(--text-mid)',
+                lineHeight: 1.6,
               }}>
-                📱 Setelah klik <strong>"Kirim via WhatsApp"</strong>, kamu akan diarahkan ke WhatsApp untuk konfirmasi langsung dengan tim kami.
+                Setelah klik <strong>"Kirim via WhatsApp"</strong>, kamu akan diarahkan ke WhatsApp untuk konfirmasi langsung dengan tim kami.
               </div>
             </div>
           )}
 
           {/* Navigation Buttons */}
-          <div style={{
+          <div className="reveal" style={{
             display: 'flex', justifyContent: 'space-between',
             marginTop: 32, gap: 12,
           }}>
@@ -516,7 +554,7 @@ Terima kasih!`
                   borderRadius: 50, border: 'none', cursor: 'pointer',
                   boxShadow: '0 4px 20px rgba(37,211,102,0.4)',
                 }}>
-                💬 Kirim via WhatsApp
+                Kirim via WhatsApp
               </button>
             )}
           </div>
