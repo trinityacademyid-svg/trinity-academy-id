@@ -53,7 +53,7 @@ export default function Footer() {
     <footer id="footer" style={{
       background: 'var(--navy)',
       padding: '72px 0 0',
-      color: 'rgba(255,255,255,0.55)',
+      color: 'var(--text)',
     }}>
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 40px' }}>
 
@@ -79,12 +79,12 @@ export default function Footer() {
                 <a key={s.label} href={s.href} title={s.label}
                   style={{
                     width: 40, height: 40,
-                    background: 'rgba(255,255,255,0.07)',
+                    background: 'rgba(255,255,255,0.08)',
                     borderRadius: 10,
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    color: 'rgba(255,255,255,0.7)',
+                    color: 'rgba(255,255,255,0.88)',
                     transition: 'all 0.3s',
-                    border: '1px solid rgba(255,255,255,0.05)',
+                    border: '1px solid rgba(255,255,255,0.08)',
                   }}
                   onMouseEnter={e => {
                     e.currentTarget.style.background = 'var(--gold)'
@@ -102,12 +102,12 @@ export default function Footer() {
                 title="WhatsApp"
                 style={{
                   width: 40, height: 40,
-                  background: 'rgba(255,255,255,0.07)',
+                  background: 'rgba(255,255,255,0.08)',
                   borderRadius: 10,
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  color: 'rgba(255,255,255,0.7)',
+                  color: 'rgba(255,255,255,0.88)',
                   transition: 'all 0.3s',
-                  border: '1px solid rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.08)',
                 }}
                 onMouseEnter={e => {
                   e.currentTarget.style.background = 'var(--gold)'
@@ -203,7 +203,7 @@ export default function Footer() {
         <div style={{
           padding: '20px 0',
           fontSize: '0.8rem',
-          color: 'rgba(255,255,255,0.25)',
+          color: 'rgba(255,255,255,0.45)',
           textAlign: 'center',
         }}>
           © {new Date().getFullYear()} Trinity Academy ID. All rights reserved.

@@ -72,42 +72,40 @@ function FloatingWA() {
 // ═══════════════════════════════════════════
 //               HERO SECTION
 // ═══════════════════════════════════════════
+// ═══════════════════════════════════════════
+//   HERO SECTION (UPGRADED - TECH STARTUP VIBES)
+// ═══════════════════════════════════════════
 function Hero() {
   return (
     <section id="hero" style={{
       minHeight: '100vh',
-      background: 'var(--navy)',
+      background: 'linear-gradient(135deg, #0d2a63, #1565c0, #1e88e5)',
       display: 'flex', alignItems: 'center',
       padding: '120px 60px 80px',
+      color: 'var(--text)',
       gap: 60, position: 'relative', overflow: 'hidden',
     }}>
-      {/* Background shapes */}
-      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
-        <div style={{
-          position: 'absolute', width: 500, height: 500,
-          borderRadius: '50%', filter: 'blur(80px)', opacity: 0.12,
-          background: 'var(--gold)', top: -100, right: -100,
-        }} />
-        <div style={{
-          position: 'absolute', width: 300, height: 300,
-          borderRadius: '50%', filter: 'blur(80px)', opacity: 0.08,
-          background: 'var(--gold-light)', bottom: -50, left: 200,
-        }} />
-      </div>
+      {/* 1b. Efek Radial Gradient untuk "Depth" (Cahaya tambahan) */}
+      <div style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none',
+        background: 'radial-gradient(circle at 70% 50%, rgba(79,195,247,0.2), transparent 50%)'
+      }} />
 
       {/* Content */}
       <div className="reveal-left" style={{ flex: 1, maxWidth: 580, zIndex: 1 }}>
         <div className="hide-mobile" style={{
           display: 'inline-flex', alignItems: 'center', gap: 8,
-          background: 'rgba(0,180,216,0.15)',
-          border: '1px solid rgba(0,180,216,0.3)',
-          color: 'var(--gold-light)',
+          background: 'rgba(255,255,255,0.1)',
+          border: '1px solid rgba(255,255,255,0.2)',
+          color: '#E0F7FA',
           fontSize: '0.85rem', fontWeight: 500,
           padding: '8px 16px', borderRadius: 50, marginBottom: 24,
+          backdropFilter: 'blur(10px)'
         }}>
           Les Private & Online — Ambon
         </div>
 
+        {/* 5. Typography (Putih + Highlight Biru Muda) */}
         <h1 style={{
           fontFamily: 'Playfair Display, serif',
           fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)',
@@ -115,12 +113,13 @@ function Hero() {
           lineHeight: 1.15, marginBottom: 24,
         }}>
           From Ambon,<br />
-          <span style={{ color: 'var(--gold)' }}>Built for</span><br />
+          <span style={{ color: '#4FC3F7' }}>Built for</span><br />
           Better Learning.
         </h1>
 
+        {/* Subtext Abu Terang */}
         <p style={{
-          fontSize: '1.05rem', color: 'rgba(255,255,255,0.65)',
+          fontSize: '1.05rem', color: '#B0BEC5',
           lineHeight: 1.8, marginBottom: 36,
         }}>
           Trinity Academy hadir untuk menemani perjalanan belajar siswa SD, SMP, dan SMA —
@@ -128,19 +127,25 @@ function Hero() {
         </p>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap', marginBottom: 48 }}>
+          {/* 2. Tombol CTA (Gradient Biru + Glow) */}
           <Link href="/register"
             style={{
-              background: 'var(--gold)', color: 'var(--navy)',
+              background: 'linear-gradient(135deg, #29B6F6, #4FC3F7)',
+              color: 'white',
               fontWeight: 700, fontSize: '0.95rem',
               padding: '14px 28px', borderRadius: 50,
-              boxShadow: 'var(--shadow-gold)', transition: 'all 0.3s',
+              boxShadow: '0 0 20px rgba(41,182,246,0.5)',
+              transition: 'all 0.3s',
             }}>
             Daftar Sekarang — Gratis
           </Link>
           <Link href="/subjects" style={{
-            color: 'rgba(255,255,255,0.8)', fontWeight: 500,
+            color: '#B0BEC5', fontWeight: 500,
             fontSize: '0.95rem', transition: 'color 0.3s',
-          }}>
+          }}
+          onMouseEnter={e => e.target.style.color = 'white'}
+          onMouseLeave={e => e.target.style.color = '#B0BEC5'}
+          >
             Lihat Mata Pelajaran →
           </Link>
         </div>
@@ -158,9 +163,9 @@ function Hero() {
                 <span style={{
                   display: 'block',
                   fontFamily: 'Playfair Display, serif',
-                  fontSize: '2rem', fontWeight: 700, color: 'var(--gold)',
+                  fontSize: '2rem', fontWeight: 700, color: '#4FC3F7',
                 }}>{s.num}</span>
-                <span style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.5)', fontWeight: 500 }}>
+                <span style={{ fontSize: '0.78rem', color: '#B0BEC5', fontWeight: 500 }}>
                   {s.label}
                 </span>
               </div>
@@ -175,22 +180,22 @@ function Hero() {
         minHeight: 460, display: 'flex',
         alignItems: 'center', justifyContent: 'center', zIndex: 1,
       }}>
+        {/* 4. Glow di Logo Tengah */}
         <div className="hero-logo" style={{
           width: 280, height: 280, borderRadius: '50%',
-          border: '2px solid rgba(0,180,216,0.3)',
+          boxShadow: '0 0 40px rgba(79,195,247,0.4), 0 0 80px rgba(41,182,246,0.2)',
+          border: '1px solid rgba(255,255,255,0.1)',
           position: 'relative', animation: 'float 6s ease-in-out infinite',
           overflow: 'hidden',
         }}>
           <img src="/logo.png" alt="Trinity Academy ID"
             style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center',
+              width: '100%', height: '100%',
+              objectFit: 'cover', objectPosition: 'center',
             }} />
         </div>
 
-        {/* Float cards */}
+        {/* 3. Card (Glassmorphism Penuh) */}
         {[
           { icon: <BookOpen size={18} strokeWidth={1.75} />, title: 'Matematika SMA', sub: 'Jadwal tersedia hari ini', pos: { top: 20, left: 0 } },
           { icon: <Star size={18} strokeWidth={1.75} />, title: 'Rating 4.9/5', sub: 'Dari 50+ ulasan siswa', pos: { bottom: 60, left: -20 } },
@@ -198,51 +203,45 @@ function Hero() {
         ].map(card => (
           <div key={card.title} className="hero-card-float hide-mobile" style={{
             position: 'absolute', ...card.pos,
-            background: 'rgba(255,255,255,0.08)',
-            backdropFilter: 'blur(12px)',
-            border: '1px solid rgba(255,255,255,0.12)',
+            background: 'rgba(255,255,255,0.05)',
+            backdropFilter: 'blur(10px)',
+            border: '1px solid rgba(255,255,255,0.1)',
             borderRadius: 16, padding: '14px 18px',
             color: 'white', animation: 'float 6s ease-in-out infinite',
           }}>
-            <div style={{ marginBottom: 6, color: 'var(--gold)' }}>{card.icon}</div>
+            <div style={{ marginBottom: 6, color: '#4FC3F7' }}>{card.icon}</div>
             <p style={{ fontSize: '0.85rem', fontWeight: 600 }}>{card.title}</p>
-            <small style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.55)' }}>{card.sub}</small>
+            <small style={{ fontSize: '0.72rem', color: '#B0BEC5' }}>{card.sub}</small>
           </div>
         ))}
       </div>
 
       <style>{`
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-12px); }
-  }
-  @media (max-width: 768px) {
-    #hero {
-      flex-direction: column !important;
-      padding: 100px 24px 60px !important;
-      text-align: center !important;
-      gap: 40px !important;
-    }
-    #hero > div:last-child {
-      min-height: auto !important;
-      width: 100% !important;
-      justify-content: center !important;
-    }
-    .hero-logo {
-      width: 200px !important;
-      height: 200px !important;
-      background: #0A3D8F !important;
-    }
-    .hero-logo img {
-      object-fit: contain !important;
-      padding: 20px !important;
-    }
-  }
-`}</style>
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-12px); }
+        }
+        @media (max-width: 768px) {
+          #hero {
+            flex-direction: column !important;
+            padding: 100px 24px 60px !important;
+            text-align: center !important;
+            gap: 40px !important;
+          }
+          #hero > div:last-child {
+            min-height: auto !important;
+            width: 100% !important;
+            justify-content: center !important;
+          }
+          .hero-logo {
+            width: 200px !important;
+            height: 200px !important;
+          }
+        }
+      `}</style>
     </section>
   )
 }
-
 // ═══════════════════════════════════════════
 //               ABOUT SECTION
 // ═══════════════════════════════════════════
@@ -271,7 +270,7 @@ function About() {
   ]
 
   return (
-    <section id="about" className="reveal" style={{ padding: '100px 0', background: 'var(--white)' }}>
+    <section id="about" className="reveal" style={{ padding: '100px 0', background: 'var(--bg-alt)' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 40px' }}>
         <div style={{
           display: 'grid', gridTemplateColumns: '1fr 1fr',
@@ -289,7 +288,7 @@ function About() {
             <h2 style={{
               fontFamily: 'Playfair Display, serif',
               fontSize: 'clamp(1.8rem, 3vw, 2.6rem)',
-              fontWeight: 700, color: 'var(--navy)',
+              fontWeight: 700, color: 'var(--text)',
               lineHeight: 1.2, marginBottom: 16,
             }}>
               Kenapa Pilih <span style={{ color: 'var(--gold)' }}>Trinity Academy ID?</span>
@@ -308,10 +307,10 @@ function About() {
                     background: 'var(--navy-subtle)',
                     borderRadius: 10,
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    color: 'var(--navy)', flexShrink: 0,
+                    color: 'var(--text)', flexShrink: 0,
                   }}>{f.icon}</div>
                   <div>
-                    <h4 style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--navy)', marginBottom: 4 }}>{f.title}</h4>
+                    <h4 style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--text)', marginBottom: 4 }}>{f.title}</h4>
                     <p style={{ fontSize: '0.875rem', color: 'var(--text-light)', lineHeight: 1.6 }}>{f.desc}</p>
                   </div>
                 </div>
@@ -435,7 +434,7 @@ function SubjectsPreview() {
   }
 
   return (
-    <section id="subjects" style={{ padding: '100px 0', background: 'var(--cream)' }}>
+    <section id="subjects" style={{ padding: '100px 0', background: 'var(--bg-alt)' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 40px' }}>
         <div style={{ textAlign: 'center' }}>
           <span style={{
@@ -447,7 +446,7 @@ function SubjectsPreview() {
           <h2 style={{
             fontFamily: 'Playfair Display, serif',
             fontSize: 'clamp(1.8rem, 3vw, 2.6rem)',
-            fontWeight: 700, color: 'var(--navy)', marginBottom: 16,
+            fontWeight: 700, color: 'var(--text)', marginBottom: 16,
           }}>
             Kami Mengajarkan <span style={{ color: 'var(--gold)' }}>Semua Jenjang</span>
           </h2>
@@ -484,9 +483,9 @@ function SubjectsPreview() {
           {subjects[activeTab].map((s, i) => (
             <div key={s.title}
               style={{
-                background: 'var(--white)', borderRadius: 16,
+                background: 'var(--surface)', borderRadius: 16,
                 padding: '28px 24px', textAlign: 'center',
-                boxShadow: '0 2px 16px rgba(0,0,0,0.06)',
+                boxShadow: '0 2px 16px rgba(0,0,0,0.12)',
                 transition: 'all 0.3s', border: '2px solid transparent',
                 cursor: 'default',
               }}
@@ -510,7 +509,7 @@ function SubjectsPreview() {
               }}>
                 {s.icon}
               </div>
-              <h4 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--navy)', marginBottom: 8 }}>{s.title}</h4>
+              <h4 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text)', marginBottom: 8 }}>{s.title}</h4>
               <p style={{ fontSize: '0.83rem', color: 'var(--text-light)', lineHeight: 1.5 }}>{s.desc}</p>
             </div>
           ))}
@@ -519,7 +518,7 @@ function SubjectsPreview() {
         <div style={{ textAlign: 'center' }}>
           <Link href="/subjects" style={{
             display: 'inline-block',
-            border: '2px solid var(--navy)', color: 'var(--navy)',
+            border: '2px solid var(--text)', color: 'var(--text)',
             fontWeight: 600, fontSize: '0.9rem',
             padding: '12px 32px', borderRadius: 50,
             transition: 'all 0.3s',
@@ -589,7 +588,7 @@ function TutorsPreview() {
   ]
 
   return (
-    <section id="tutors" style={{ padding: '100px 0', background: 'var(--white)' }}>
+    <section id="tutors" style={{ padding: '100px 0', background: 'var(--bg-alt)' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 40px' }}>
         <div style={{ textAlign: 'center' }}>
           <span style={{
@@ -601,7 +600,7 @@ function TutorsPreview() {
           <h2 style={{
             fontFamily: 'Playfair Display, serif',
             fontSize: 'clamp(1.8rem, 3vw, 2.6rem)',
-            fontWeight: 700, color: 'var(--navy)', marginBottom: 16,
+            fontWeight: 700, color: 'var(--text)', marginBottom: 16,
           }}>
             Kenali <span style={{ color: 'var(--gold)' }}>Tutor Kami</span>
           </h2>
@@ -620,7 +619,7 @@ function TutorsPreview() {
               className="reveal"
               data-delay={i}
               style={{
-                background: 'var(--cream)', borderRadius: 16,
+                background: 'var(--surface)', borderRadius: 16,
                 padding: 28, textAlign: 'center',
                 border: '2px solid transparent', transition: 'all 0.3s',
               }}
@@ -648,7 +647,7 @@ function TutorsPreview() {
                   border: '2px solid white',
                 }} />
               </div>
-              <h4 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--navy)', marginBottom: 6 }}>{t.name}</h4>
+              <h4 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text)', marginBottom: 6 }}>{t.name}</h4>
               <span style={{
                 display: 'inline-block', background: 'var(--navy)',
                 color: 'var(--gold)', fontSize: '0.72rem', fontWeight: 600,
@@ -750,7 +749,7 @@ function Testimonials() {
   ]
 
   return (
-    <section id="testimonials" style={{ padding: '100px 0', background: 'var(--cream)' }}>
+    <section id="testimonials" style={{ padding: '100px 0', background: 'var(--bg-alt)' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 40px' }}>
         <div style={{ textAlign: 'center' }}>
           <span style={{
@@ -762,7 +761,7 @@ function Testimonials() {
           <h2 style={{
             fontFamily: 'Playfair Display, serif',
             fontSize: 'clamp(1.8rem, 3vw, 2.6rem)',
-            fontWeight: 700, color: 'var(--navy)', marginBottom: 16,
+            fontWeight: 700, color: 'var(--text)', marginBottom: 16,
           }}>
             Kata Mereka tentang <span style={{ color: 'var(--gold)' }}>Trinity Academy ID</span>
           </h2>
@@ -779,8 +778,8 @@ function Testimonials() {
           {testis.map((t, i) => (
   <div key={i}
               style={{
-                background: 'var(--white)', borderRadius: 16,
-                padding: 28, boxShadow: '0 2px 16px rgba(0,0,0,0.06)',
+                background: 'var(--surface)', borderRadius: 16,
+                padding: 28, boxShadow: '0 2px 16px rgba(0,0,0,0.12)',
                 transition: 'all 0.3s', borderLeft: '4px solid transparent',
               }}
               onMouseEnter={e => {
@@ -812,7 +811,7 @@ function Testimonials() {
                   flexShrink: 0,
                 }}>{t.initials}</div>
                 <div>
-                  <strong style={{ display: 'block', fontSize: '0.9rem', color: 'var(--navy)' }}>{t.name}</strong>
+                  <strong style={{ display: 'block', fontSize: '0.9rem', color: 'var(--text)' }}>{t.name}</strong>
                   <small style={{ fontSize: '0.78rem', color: 'var(--text-light)' }}>{t.role}</small>
                 </div>
               </div>
@@ -875,7 +874,7 @@ function Suggestions() {
   }
 
   return (
-    <section id="suggestions" style={{ padding: '100px 0', background: 'var(--white)' }}>
+    <section id="suggestions" style={{ padding: '100px 0', background: 'var(--bg-alt)' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 40px' }}>
         <div style={{ textAlign: 'center' }}>
           <span style={{
@@ -887,7 +886,7 @@ function Suggestions() {
           <h2 style={{
             fontFamily: 'Playfair Display, serif',
             fontSize: 'clamp(1.8rem, 3vw, 2.6rem)',
-            fontWeight: 700, color: 'var(--navy)', marginBottom: 16,
+            fontWeight: 700, color: 'var(--text)', marginBottom: 16,
           }}>
             Sampaikan <span style={{ color: 'var(--gold)' }}>Saran & Masukan</span>
           </h2>
@@ -902,17 +901,17 @@ function Suggestions() {
         }} className="suggestion-grid">
 
           <form onSubmit={handleSubmit} style={{
-            background: 'var(--cream)', borderRadius: 16, padding: 40,
+            background: 'var(--surface)', borderRadius: 16, padding: 40,
           }}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 20 }}
               className="form-row">
               <div>
-                <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--navy)', display: 'block', marginBottom: 8 }}>Nama</label>
+                <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text)', display: 'block', marginBottom: 8 }}>Nama</label>
                 <input style={inputStyle} placeholder="Nama kamu..." value={form.name}
                   onChange={e => setForm({ ...form, name: e.target.value })} required />
               </div>
               <div>
-                <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--navy)', display: 'block', marginBottom: 8 }}>Sebagai</label>
+                <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text)', display: 'block', marginBottom: 8 }}>Sebagai</label>
                 <select style={inputStyle} value={form.role}
                   onChange={e => setForm({ ...form, role: e.target.value })}>
                   <option value="">Pilih peran...</option>
@@ -924,12 +923,12 @@ function Suggestions() {
               </div>
             </div>
             <div style={{ marginBottom: 20 }}>
-              <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--navy)', display: 'block', marginBottom: 8 }}>Subjek Saran</label>
+              <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text)', display: 'block', marginBottom: 8 }}>Subjek Saran</label>
               <input style={inputStyle} placeholder="Tentang apa?" value={form.subject}
                 onChange={e => setForm({ ...form, subject: e.target.value })} required />
             </div>
             <div style={{ marginBottom: 24 }}>
-              <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--navy)', display: 'block', marginBottom: 8 }}>Saran / Masukan</label>
+              <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text)', display: 'block', marginBottom: 8 }}>Saran / Masukan</label>
               <textarea style={{ ...inputStyle, resize: 'vertical' }} rows={5}
                 placeholder="Tuliskan saran atau masukan kamu di sini..."
                 value={form.message}
@@ -964,17 +963,17 @@ function Suggestions() {
               { icon: <Mail size={24} strokeWidth={1.75} />, title: 'Email Kami', desc: 'Kirim pertanyaan atau saran ke email resmi kami.', link: 'mailto:trinityacademy.id@gmail.com', label: 'Kirim Email' },
             ].map(card => (
               <div key={card.title} style={{
-                background: 'var(--cream)', borderRadius: 16,
+                background: 'var(--surface)', borderRadius: 16,
                 padding: 24, textAlign: 'center',
                 border: '2px solid transparent', transition: 'all 0.3s',
               }}
                 onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--gold)'}
                 onMouseLeave={e => e.currentTarget.style.borderColor = 'transparent'}
               >
-                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 10, color: 'var(--navy)' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 10, color: 'var(--text)' }}>
                   {card.icon}
                 </div>
-                <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--navy)', marginBottom: 8 }}>{card.title}</h4>
+                <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text)', marginBottom: 8 }}>{card.title}</h4>
                 <p style={{ fontSize: '0.83rem', color: 'var(--text-light)', lineHeight: 1.6, marginBottom: 14 }}>{card.desc}</p>
                 <a href={card.link} target="_blank" rel="noreferrer" style={{
                   display: 'inline-block', background: 'var(--navy)',

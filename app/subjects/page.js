@@ -141,7 +141,7 @@ function SubjectCard({ subject }) {
           borderRadius: 10,
         }}>
           <p style={{
-            fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-light)',
+            fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-mid)',
             marginBottom: 10, letterSpacing: '0.12em', textTransform: 'uppercase',
           }}>Topik Utama</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
@@ -192,7 +192,7 @@ export default function SubjectsPage() {
         }}>
           Semua Mata Pelajaran <span style={{ color: 'var(--gold)' }}>Tersedia</span>
         </h1>
-        <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.6)', maxWidth: 520, margin: '0 auto' }}>
+        <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.88)', maxWidth: 520, margin: '0 auto' }}>
           Dari SD hingga SMA, kami siap mendampingi perjalanan belajar dengan kurikulum yang terstruktur
         </p>
         </div>
@@ -243,7 +243,7 @@ export default function SubjectsPage() {
                 fontSize: '1.6rem', fontWeight: 700,
                 color: 'white', marginBottom: 8,
               }}>{current.title}</h2>
-              <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)', maxWidth: 500 }}>
+              <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.88)', maxWidth: 500 }}>
                 {current.desc}
               </p>
             </div>

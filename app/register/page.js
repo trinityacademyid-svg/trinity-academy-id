@@ -175,7 +175,7 @@ Terima kasih!`
         }}>
           Mulai Perjalanan <span style={{ color: 'var(--gold)' }}>Belajarmu</span>
         </h1>
-        <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.6)' }}>
+        <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.88)' }}>
           Isi formulir di bawah — gratis, mudah, dan hanya 3 menit!
         </p>        </div>      </section>
 

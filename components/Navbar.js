@@ -8,6 +8,7 @@ const navLinks = [
   { label: 'Program', href: '/pricing' },
   { label: 'Mata Pelajaran', href: '/subjects' },
   { label: 'Tutor', href: '/tutors' },
+  { label: 'Signature', href: '/signature' },
 ]
 
 export default function Navbar() {
@@ -67,13 +68,13 @@ export default function Navbar() {
                 <Link href={link.href} style={{
                   fontSize: '0.875rem',
                   fontWeight: isActive ? 600 : 400,
-                  color: isActive ? 'var(--white)' : 'rgba(255,255,255,0.65)',
+                  color: isActive ? 'var(--white)' : 'rgba(255,255,255,0.85)',
                   transition: 'color 0.2s',
                   position: 'relative',
                   paddingBottom: 2,
                 }}
                   onMouseEnter={e => e.target.style.color = 'var(--white)'}
-                  onMouseLeave={e => e.target.style.color = isActive ? 'var(--white)' : 'rgba(255,255,255,0.65)'}
+                  onMouseLeave={e => e.target.style.color = isActive ? 'var(--white)' : 'rgba(255,255,255,0.85)'}
                 >
                   {link.label}
                   {isActive && (
@@ -93,10 +94,10 @@ export default function Navbar() {
           <a href="https://wa.me/6281234567890" target="_blank" rel="noreferrer"
             style={{
               fontSize: '0.875rem', fontWeight: 500,
-              color: 'rgba(255,255,255,0.65)', transition: 'color 0.2s',
+              color: 'rgba(255,255,255,0.92)', transition: 'color 0.2s',
             }}
             onMouseEnter={e => e.target.style.color = 'var(--white)'}
-            onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.65)'}
+            onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.85)'}
           >
             Hubungi
           </a>
@@ -162,9 +163,9 @@ export default function Navbar() {
                     style={{
                       display: 'block',
                       fontSize: '1.1rem', fontWeight: 500,
-                      color: 'rgba(255,255,255,0.85)',
+                      color: 'rgba(255,255,255,0.92)',
                       padding: '14px 0',
-                      borderBottom: '1px solid rgba(255,255,255,0.08)',
+                      borderBottom: '1px solid rgba(255,255,255,0.12)',
                     }}>
                     {link.label}
                   </Link>
@@ -176,9 +177,9 @@ export default function Navbar() {
                   style={{
                     display: 'block',
                     fontSize: '1.1rem', fontWeight: 500,
-                    color: 'rgba(255,255,255,0.85)',
+                    color: 'rgba(255,255,255,0.92)',
                     padding: '14px 0',
-                    borderBottom: '1px solid rgba(255,255,255,0.08)',
+                    borderBottom: '1px solid rgba(255,255,255,0.12)',
                   }}>
                   Hubungi
                 </a>

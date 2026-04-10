@@ -121,11 +121,11 @@ export default function TutorsPage() {
           <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 700, color: 'white', marginBottom: 12 }}>
             Temukan Tutor <span style={{ color: 'var(--gold)' }}>Terbaik</span>
           </h1>
-          <p style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.55)', maxWidth: 480, margin: '0 auto 36px' }}>
+          <p style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.85)', maxWidth: 480, margin: '0 auto 36px' }}>
             Semua tutor telah melalui seleksi ketat. Admin kami akan membantu mencocokkan tutor terbaik untukmu.
           </p>
           <div style={{ maxWidth: 480, margin: '0 auto', position: 'relative' }}>
-            <Search size={16} style={{ position: 'absolute', left: 18, top: '50%', transform: 'translateY(-50%)', color: 'rgba(255,255,255,0.35)', pointerEvents: 'none' }} />
+            <Search size={16} style={{ position: 'absolute', left: 18, top: '50%', transform: 'translateY(-50%)', color: 'rgba(255,255,255,0.6)', pointerEvents: 'none' }} />
             <input
               type="text"
               placeholder="Cari tutor atau mata pelajaran..."
@@ -149,7 +149,7 @@ export default function TutorsPage() {
                 {f}
               </button>
             ))}
-            <span style={{ marginLeft: 'auto', fontSize: '0.8rem', color: 'var(--text-light)' }}>{filtered.length} tutor ditemukan</span>
+            <span style={{ marginLeft: 'auto', fontSize: '0.8rem', color: 'var(--text-mid)' }}>{filtered.length} tutor ditemukan</span>
           </div>
 
           {filtered.length === 0 ? (

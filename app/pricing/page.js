@@ -163,7 +163,7 @@ function ProgramCard({ program }) {
         ? 'var(--navy)'
         : program.exclusive
           ? 'var(--navy-mid)'
-          : 'var(--white)',
+          : 'var(--bg)',
       borderRadius: 20,
       border: program.popular
         ? '2px solid var(--gold)'
@@ -223,7 +223,7 @@ function ProgramCard({ program }) {
           ? 'rgba(201,168,76,0.15)'
           : 'var(--navy-subtle)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        color: program.popular || program.exclusive ? 'var(--gold)' : 'var(--navy)',
+        color: program.popular || program.exclusive ? 'var(--gold)' : 'var(--white)',
         marginBottom: 20,
       }}>
         {program.icon}
@@ -234,7 +234,7 @@ function ProgramCard({ program }) {
         <h3 style={{
           fontFamily: 'Playfair Display, serif',
           fontSize: '1.2rem', fontWeight: 700,
-          color: program.popular || program.exclusive ? 'white' : 'var(--navy)',
+          color: program.popular || program.exclusive ? 'white' : 'var(--white)',
           marginBottom: 6,
         }}>{program.name}</h3>
         <span style={{
@@ -435,7 +435,7 @@ export default function PricingPage() {
           Trinity Academy <span style={{ color: 'var(--gold)' }}>Program</span>
         </h1>
         <p style={{
-          fontSize: '1rem', color: 'rgba(255,255,255,0.6)',
+          fontSize: '1rem', color: 'rgba(255,255,255,0.88)',
           maxWidth: 520, margin: '0 auto 8px',
         }}>
           From Ambon, built for better learning.
@@ -490,7 +490,7 @@ export default function PricingPage() {
             <h2 style={{
               fontFamily: 'Playfair Display, serif',
               fontSize: 'clamp(1.6rem, 3vw, 2.2rem)',
-              fontWeight: 700, color: 'var(--navy)',
+              fontWeight: 700, color: 'var(--white)',
             }}>
               Belajar dari <span style={{ color: 'var(--gold)' }}>Mana Saja</span>
             </h2>
@@ -647,7 +647,7 @@ export default function PricingPage() {
         }}>
           Siap Mulai Perjalanan Belajarmu?
         </h2>
-        <p style={{ color: 'rgba(255,255,255,0.55)', marginBottom: 32, fontSize: '1rem' }}>
+        <p style={{ color: 'rgba(255,255,255,0.85)', marginBottom: 32, fontSize: '1rem' }}>
           Konsultasi gratis — kami bantu pilih program terbaik untuk anakmu.
         </p>
         <div style={{ display: 'flex', justifyContent: 'center', gap: 16, flexWrap: 'wrap' }}>
